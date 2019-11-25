@@ -23,7 +23,7 @@ function map(array, fn) {
         i;
 
     for ( i = 0; i < array.length; i++) {
-        newArray[i] = fn(array[i], i, array);
+        newArray.push(fn(array[i], i, array));
     }
 
     return newArray;
@@ -64,7 +64,9 @@ function upperProps(obj) {
     let arr = [];
 
     for ( let i in obj ) {
-        arr.push(i.toUpperCase())
+        if (obj.hasOwnProperty(i)) {
+            arr.push(i.toUpperCase())
+        }
     }
 
     return arr;
@@ -168,7 +170,6 @@ function createProxy(obj) {
             }
 
             return false;
-
         }
     });
 }
