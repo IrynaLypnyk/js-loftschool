@@ -17,7 +17,6 @@
    isAllTrue([100, 2, 3, 4, 5], n => n < 10) // вернет false
  */
 function isAllTrue(array, fn) {
-
     if ( !array.length || !Array.isArray(array) ) {
         throw new Error ( 'empty array' )
     } else if ( typeof fn !== 'function' ) {
@@ -55,7 +54,7 @@ function isAllTrue(array, fn) {
    isSomeTrue([1, 2, 3, 4, 5], n => n > 20) // вернет false
  */
 function isSomeTrue(array, fn) {
-    if ( !array.length || !Array.isArray(array) ) {
+    if ( !array.length || Object.prototype.toString.call(array) !== '[object Array]' ) {
         throw new Error ('empty array')
     } else if (typeof fn !== 'function') {
         throw new Error('fn is not a function')
@@ -103,7 +102,6 @@ function returnBadArguments(fn) {
     }
 
     return errors;
-
 }
 
 /*
@@ -131,13 +129,11 @@ function calculator( number = 0 ) {
 
     let obj = {
         sum: function (...args) {
-
             return args.reduce(function(sum, current) {
                 return sum + current;
             }, number)
         },
         dif: function (...args) {
-
             return args.reduce(function(sum, current) {
                 return sum - current;
             }, number)
@@ -152,7 +148,6 @@ function calculator( number = 0 ) {
             }, number)
         },
         mul: function (...args) {
-
             return args.reduce(function(sum, current) {
                 return sum * current;
             }, number)
@@ -160,7 +155,6 @@ function calculator( number = 0 ) {
     }
 
     return obj;
-
 }
 
 /* При решении задач, пострайтесь использовать отладчик */
