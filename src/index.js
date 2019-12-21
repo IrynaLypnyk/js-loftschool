@@ -14,7 +14,6 @@ function createDivWithText(text) {
     const elem = document.createElement('div');
 
     elem.textContent=text;
-    document.body.appendChild(elem);
 
     return elem;
 }
@@ -53,12 +52,11 @@ function prepend(what, where) {
 function findAllPSiblings(where) {
     let res = [];
 
-    for (let child of where.children){
-        let currentElem = child,
-            nextElem = currentElem.nextElementSibling;
+    for (let child of where.children) {
+        let nextElem = child.nextElementSibling;
 
         if (nextElem && nextElem.tagName === 'P') {
-            res.push(currentElem);
+            res.push(child);
         }
     }
 
